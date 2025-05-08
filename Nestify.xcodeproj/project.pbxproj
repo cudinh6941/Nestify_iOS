@@ -7,18 +7,79 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		191F7B9C55BECDD98BFA0ACB /* Pods_Nestify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6A2ABE33586E087AE66272E /* Pods_Nestify.framework */; };
+		2C11FFB82DCAFBB1007FCC75 /* schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C11FFB72DCAFBB1007FCC75 /* schema.swift */; };
+		2C11FFBA2DCAFEDE007FCC75 /* RealmMangager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C11FFB92DCAFEDE007FCC75 /* RealmMangager.swift */; };
+		2C11FFBC2DCCE112007FCC75 /* AddItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C11FFBB2DCCE112007FCC75 /* AddItemViewModel.swift */; };
+		2C11FFBE2DCCFAFD007FCC75 /* DateEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C11FFBD2DCCFAFD007FCC75 /* DateEx.swift */; };
 		2C839AAD2DC75E9B00350073 /* NestifyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C839AAC2DC75E9B00350073 /* NestifyApp.swift */; };
 		2C839AAF2DC75E9B00350073 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C839AAE2DC75E9B00350073 /* ContentView.swift */; };
 		2C839AB12DC75E9C00350073 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C839AB02DC75E9C00350073 /* Assets.xcassets */; };
 		2C839AB42DC75E9C00350073 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C839AB32DC75E9C00350073 /* Preview Assets.xcassets */; };
+		2C839AC02DC75F0700350073 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C839ABF2DC75F0700350073 /* CustomTabBar.swift */; };
+		2C839AC42DC75FD300350073 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C839AC32DC75FD300350073 /* HomeView.swift */; };
+		2C839ADC2DC762BA00350073 /* HomeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C839ADB2DC762BA00350073 /* HomeHeaderView.swift */; };
+		2C839ADE2DC762D400350073 /* OverviewCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C839ADD2DC762D400350073 /* OverviewCard.swift */; };
+		2C839AE02DC7633900350073 /* MonthBudgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C839ADF2DC7633900350073 /* MonthBudgetView.swift */; };
+		2C839AE22DC7635300350073 /* CategoryCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C839AE12DC7635300350073 /* CategoryCard.swift */; };
+		2C839AE42DC7642800350073 /* ColorEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C839AE32DC7642800350073 /* ColorEx.swift */; };
+		2C839AE72DC7647D00350073 /* AddMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C839AE62DC7647D00350073 /* AddMenu.swift */; };
+		2C839AEA2DC764AD00350073 /* CategoryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C839AE92DC764AD00350073 /* CategoryRepository.swift */; };
+		2C839AEC2DC8E62E00350073 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C839AEB2DC8E62E00350073 /* CustomTextField.swift */; };
+		2C839AEE2DC8E63E00350073 /* CustomDropdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C839AED2DC8E63E00350073 /* CustomDropdown.swift */; };
+		2C839AF02DC8E68100350073 /* ViewEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C839AEF2DC8E68100350073 /* ViewEx.swift */; };
+		2C839AF22DC8E74E00350073 /* DynamicAddForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C839AF12DC8E74E00350073 /* DynamicAddForm.swift */; };
+		2C839AF42DC8E77200350073 /* FormConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C839AF32DC8E77200350073 /* FormConfig.swift */; };
+		2C839AF62DC8EADD00350073 /* AddItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C839AF52DC8EADD00350073 /* AddItemView.swift */; };
+		2C839AF82DC8EF8000350073 /* AppRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C839AF72DC8EF8000350073 /* AppRoute.swift */; };
+		2C839AFB2DC8EFE600350073 /* NavigationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C839AFA2DC8EFE600350073 /* NavigationCoordinator.swift */; };
+		2C839AFD2DC8F1BE00350073 /* AppSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C839AFC2DC8F1BE00350073 /* AppSheet.swift */; };
+		2C839AFF2DC8F25500350073 /* SheetCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C839AFE2DC8F25500350073 /* SheetCoordinator.swift */; };
+		2CE5009A2DC9B2CA00CCEDE1 /* AddPetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE500992DC9B2CA00CCEDE1 /* AddPetView.swift */; };
+		2CE5009E2DC9BE7000CCEDE1 /* CustomNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE5009D2DC9BE7000CCEDE1 /* CustomNavigation.swift */; };
+		2CE500A02DC9C2EC00CCEDE1 /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE5009F2DC9C2EC00CCEDE1 /* ImagePickerView.swift */; };
+		2CE500A32DCA06BE00CCEDE1 /* DatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE500A22DCA06BE00CCEDE1 /* DatePicker.swift */; };
+		2CE500A62DCA098D00CCEDE1 /* common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE500A52DCA098D00CCEDE1 /* common.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2C11FFB72DCAFBB1007FCC75 /* schema.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = schema.swift; sourceTree = "<group>"; };
+		2C11FFB92DCAFEDE007FCC75 /* RealmMangager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmMangager.swift; sourceTree = "<group>"; };
+		2C11FFBB2DCCE112007FCC75 /* AddItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemViewModel.swift; sourceTree = "<group>"; };
+		2C11FFBD2DCCFAFD007FCC75 /* DateEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateEx.swift; sourceTree = "<group>"; };
 		2C839AA92DC75E9B00350073 /* Nestify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nestify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C839AAC2DC75E9B00350073 /* NestifyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NestifyApp.swift; sourceTree = "<group>"; };
 		2C839AAE2DC75E9B00350073 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		2C839AB02DC75E9C00350073 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2C839AB32DC75E9C00350073 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		2C839ABF2DC75F0700350073 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
+		2C839AC32DC75FD300350073 /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeView.swift; path = ../../../Desktop/HomeView.swift; sourceTree = "<group>"; };
+		2C839ADB2DC762BA00350073 /* HomeHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderView.swift; sourceTree = "<group>"; };
+		2C839ADD2DC762D400350073 /* OverviewCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewCard.swift; sourceTree = "<group>"; };
+		2C839ADF2DC7633900350073 /* MonthBudgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthBudgetView.swift; sourceTree = "<group>"; };
+		2C839AE12DC7635300350073 /* CategoryCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCard.swift; sourceTree = "<group>"; };
+		2C839AE32DC7642800350073 /* ColorEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorEx.swift; sourceTree = "<group>"; };
+		2C839AE62DC7647D00350073 /* AddMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMenu.swift; sourceTree = "<group>"; };
+		2C839AE92DC764AD00350073 /* CategoryRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryRepository.swift; sourceTree = "<group>"; };
+		2C839AEB2DC8E62E00350073 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		2C839AED2DC8E63E00350073 /* CustomDropdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDropdown.swift; sourceTree = "<group>"; };
+		2C839AEF2DC8E68100350073 /* ViewEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewEx.swift; sourceTree = "<group>"; };
+		2C839AF12DC8E74E00350073 /* DynamicAddForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicAddForm.swift; sourceTree = "<group>"; };
+		2C839AF32DC8E77200350073 /* FormConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormConfig.swift; sourceTree = "<group>"; };
+		2C839AF52DC8EADD00350073 /* AddItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemView.swift; sourceTree = "<group>"; };
+		2C839AF72DC8EF8000350073 /* AppRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRoute.swift; sourceTree = "<group>"; };
+		2C839AFA2DC8EFE600350073 /* NavigationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationCoordinator.swift; sourceTree = "<group>"; };
+		2C839AFC2DC8F1BE00350073 /* AppSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSheet.swift; sourceTree = "<group>"; };
+		2C839AFE2DC8F25500350073 /* SheetCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetCoordinator.swift; sourceTree = "<group>"; };
+		2CE500992DC9B2CA00CCEDE1 /* AddPetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPetView.swift; sourceTree = "<group>"; };
+		2CE5009D2DC9BE7000CCEDE1 /* CustomNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigation.swift; sourceTree = "<group>"; };
+		2CE5009F2DC9C2EC00CCEDE1 /* ImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
+		2CE500A12DC9C62C00CCEDE1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		2CE500A22DCA06BE00CCEDE1 /* DatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePicker.swift; sourceTree = "<group>"; };
+		2CE500A52DCA098D00CCEDE1 /* common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = common.swift; sourceTree = "<group>"; };
+		B484AA0F26081F480949759A /* Pods-Nestify.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nestify.debug.xcconfig"; path = "Target Support Files/Pods-Nestify/Pods-Nestify.debug.xcconfig"; sourceTree = "<group>"; };
+		B6A2ABE33586E087AE66272E /* Pods_Nestify.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Nestify.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE3C0A80B98D2F1DC714CA2F /* Pods-Nestify.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nestify.release.xcconfig"; path = "Target Support Files/Pods-Nestify/Pods-Nestify.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,17 +87,35 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				191F7B9C55BECDD98BFA0ACB /* Pods_Nestify.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C11FFB62DCAFBA6007FCC75 /* Schema */ = {
+			isa = PBXGroup;
+			children = (
+				2C11FFB72DCAFBB1007FCC75 /* schema.swift */,
+			);
+			path = Schema;
+			sourceTree = "<group>";
+		};
 		2C839AA02DC75E9B00350073 = {
 			isa = PBXGroup;
 			children = (
+				2CE500A42DCA097900CCEDE1 /* Const */,
+				2C839AF92DC8EFBE00350073 /* Navigation */,
+				2C839AE82DC7649D00350073 /* Models */,
+				2C839ABD2DC75ED700350073 /* Extension */,
+				2C839ABC2DC75ECF00350073 /* Service */,
+				2C839ABB2DC75ECA00350073 /* ViewModel */,
+				2C839ABA2DC75EC300350073 /* Views */,
 				2C839AAB2DC75E9B00350073 /* Nestify */,
 				2C839AAA2DC75E9B00350073 /* Products */,
+				DFF00AD7071D0164DFF3C8F3 /* Pods */,
+				B15DF69C5EDFAB92E2FAAD93 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -51,6 +130,7 @@
 		2C839AAB2DC75E9B00350073 /* Nestify */ = {
 			isa = PBXGroup;
 			children = (
+				2CE500A12DC9C62C00CCEDE1 /* Info.plist */,
 				2C839AAC2DC75E9B00350073 /* NestifyApp.swift */,
 				2C839AAE2DC75E9B00350073 /* ContentView.swift */,
 				2C839AB02DC75E9C00350073 /* Assets.xcassets */,
@@ -67,6 +147,116 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		2C839ABA2DC75EC300350073 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2C839AE52DC7647300350073 /* Add */,
+				2C839ADA2DC7625900350073 /* Shared */,
+				2C839ABF2DC75F0700350073 /* CustomTabBar.swift */,
+				2C839AC32DC75FD300350073 /* HomeView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		2C839ABB2DC75ECA00350073 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2C11FFBB2DCCE112007FCC75 /* AddItemViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2C839ABC2DC75ECF00350073 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				2C11FFB92DCAFEDE007FCC75 /* RealmMangager.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		2C839ABD2DC75ED700350073 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				2C839AE32DC7642800350073 /* ColorEx.swift */,
+				2C839AEF2DC8E68100350073 /* ViewEx.swift */,
+				2C11FFBD2DCCFAFD007FCC75 /* DateEx.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		2C839ADA2DC7625900350073 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				2C839ADB2DC762BA00350073 /* HomeHeaderView.swift */,
+				2C839ADD2DC762D400350073 /* OverviewCard.swift */,
+				2C839ADF2DC7633900350073 /* MonthBudgetView.swift */,
+				2C839AE12DC7635300350073 /* CategoryCard.swift */,
+				2C839AEB2DC8E62E00350073 /* CustomTextField.swift */,
+				2C839AED2DC8E63E00350073 /* CustomDropdown.swift */,
+				2C839AF12DC8E74E00350073 /* DynamicAddForm.swift */,
+				2CE5009F2DC9C2EC00CCEDE1 /* ImagePickerView.swift */,
+				2CE500A22DCA06BE00CCEDE1 /* DatePicker.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		2C839AE52DC7647300350073 /* Add */ = {
+			isa = PBXGroup;
+			children = (
+				2C839AE62DC7647D00350073 /* AddMenu.swift */,
+				2C839AF52DC8EADD00350073 /* AddItemView.swift */,
+				2CE500992DC9B2CA00CCEDE1 /* AddPetView.swift */,
+			);
+			path = Add;
+			sourceTree = "<group>";
+		};
+		2C839AE82DC7649D00350073 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2C11FFB62DCAFBA6007FCC75 /* Schema */,
+				2C839AE92DC764AD00350073 /* CategoryRepository.swift */,
+				2C839AF32DC8E77200350073 /* FormConfig.swift */,
+				2C839AF72DC8EF8000350073 /* AppRoute.swift */,
+				2C839AFC2DC8F1BE00350073 /* AppSheet.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		2C839AF92DC8EFBE00350073 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				2C839AFA2DC8EFE600350073 /* NavigationCoordinator.swift */,
+				2C839AFE2DC8F25500350073 /* SheetCoordinator.swift */,
+				2CE5009D2DC9BE7000CCEDE1 /* CustomNavigation.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		2CE500A42DCA097900CCEDE1 /* Const */ = {
+			isa = PBXGroup;
+			children = (
+				2CE500A52DCA098D00CCEDE1 /* common.swift */,
+			);
+			path = Const;
+			sourceTree = "<group>";
+		};
+		B15DF69C5EDFAB92E2FAAD93 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B6A2ABE33586E087AE66272E /* Pods_Nestify.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DFF00AD7071D0164DFF3C8F3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B484AA0F26081F480949759A /* Pods-Nestify.debug.xcconfig */,
+				CE3C0A80B98D2F1DC714CA2F /* Pods-Nestify.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,9 +264,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2C839AB72DC75E9C00350073 /* Build configuration list for PBXNativeTarget "Nestify" */;
 			buildPhases = (
+				3BFEBFC5F062A05215233866 /* [CP] Check Pods Manifest.lock */,
 				2C839AA52DC75E9B00350073 /* Sources */,
 				2C839AA62DC75E9B00350073 /* Frameworks */,
 				2C839AA72DC75E9B00350073 /* Resources */,
+				ADE7C4F1D0FD8BFC01C283CA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -132,12 +324,82 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3BFEBFC5F062A05215233866 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Nestify-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ADE7C4F1D0FD8BFC01C283CA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Nestify/Pods-Nestify-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Nestify/Pods-Nestify-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Nestify/Pods-Nestify-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		2C839AA52DC75E9B00350073 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CE5009E2DC9BE7000CCEDE1 /* CustomNavigation.swift in Sources */,
+				2C839AF62DC8EADD00350073 /* AddItemView.swift in Sources */,
+				2CE500A62DCA098D00CCEDE1 /* common.swift in Sources */,
 				2C839AAF2DC75E9B00350073 /* ContentView.swift in Sources */,
+				2C11FFB82DCAFBB1007FCC75 /* schema.swift in Sources */,
+				2C839AFB2DC8EFE600350073 /* NavigationCoordinator.swift in Sources */,
+				2CE500A32DCA06BE00CCEDE1 /* DatePicker.swift in Sources */,
+				2CE500A02DC9C2EC00CCEDE1 /* ImagePickerView.swift in Sources */,
+				2C839AFD2DC8F1BE00350073 /* AppSheet.swift in Sources */,
+				2C839ADC2DC762BA00350073 /* HomeHeaderView.swift in Sources */,
+				2C839AEA2DC764AD00350073 /* CategoryRepository.swift in Sources */,
+				2C839AEE2DC8E63E00350073 /* CustomDropdown.swift in Sources */,
+				2C11FFBC2DCCE112007FCC75 /* AddItemViewModel.swift in Sources */,
+				2C839AC02DC75F0700350073 /* CustomTabBar.swift in Sources */,
+				2C11FFBA2DCAFEDE007FCC75 /* RealmMangager.swift in Sources */,
+				2C839AF42DC8E77200350073 /* FormConfig.swift in Sources */,
+				2C11FFBE2DCCFAFD007FCC75 /* DateEx.swift in Sources */,
+				2C839AFF2DC8F25500350073 /* SheetCoordinator.swift in Sources */,
+				2C839AF02DC8E68100350073 /* ViewEx.swift in Sources */,
+				2C839AC42DC75FD300350073 /* HomeView.swift in Sources */,
+				2C839ADE2DC762D400350073 /* OverviewCard.swift in Sources */,
+				2C839AE42DC7642800350073 /* ColorEx.swift in Sources */,
+				2C839AF82DC8EF8000350073 /* AppRoute.swift in Sources */,
+				2C839AE72DC7647D00350073 /* AddMenu.swift in Sources */,
+				2C839AF22DC8E74E00350073 /* DynamicAddForm.swift in Sources */,
+				2C839AEC2DC8E62E00350073 /* CustomTextField.swift in Sources */,
+				2CE5009A2DC9B2CA00CCEDE1 /* AddPetView.swift in Sources */,
+				2C839AE22DC7635300350073 /* CategoryCard.swift in Sources */,
+				2C839AE02DC7633900350073 /* MonthBudgetView.swift in Sources */,
 				2C839AAD2DC75E9B00350073 /* NestifyApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -182,7 +444,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -245,7 +507,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -266,6 +528,7 @@
 		};
 		2C839AB82DC75E9C00350073 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B484AA0F26081F480949759A /* Pods-Nestify.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -274,12 +537,15 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Nestify/Preview Content\"";
 				DEVELOPMENT_TEAM = 28VZS4MAKH;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Nestify/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -295,6 +561,7 @@
 		};
 		2C839AB92DC75E9C00350073 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CE3C0A80B98D2F1DC714CA2F /* Pods-Nestify.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -303,12 +570,15 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Nestify/Preview Content\"";
 				DEVELOPMENT_TEAM = 28VZS4MAKH;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Nestify/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
