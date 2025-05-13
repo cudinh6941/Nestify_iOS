@@ -8,10 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		191F7B9C55BECDD98BFA0ACB /* Pods_Nestify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6A2ABE33586E087AE66272E /* Pods_Nestify.framework */; };
+		2C05C9A02DCE25A6002E5242 /* ListHouseholdItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C05C99F2DCE25A6002E5242 /* ListHouseholdItemView.swift */; };
+		2C05C9A22DCE2927002E5242 /* GenericListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C05C9A12DCE2927002E5242 /* GenericListViewModel.swift */; };
+		2C05C9A42DCE2AF6002E5242 /* GenericListview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C05C9A32DCE2AF6002E5242 /* GenericListview.swift */; };
+		2C05C9A72DCE2F01002E5242 /* ItemDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C05C9A62DCE2F01002E5242 /* ItemDetailView.swift */; };
 		2C11FFB82DCAFBB1007FCC75 /* schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C11FFB72DCAFBB1007FCC75 /* schema.swift */; };
 		2C11FFBA2DCAFEDE007FCC75 /* RealmMangager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C11FFB92DCAFEDE007FCC75 /* RealmMangager.swift */; };
 		2C11FFBC2DCCE112007FCC75 /* AddItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C11FFBB2DCCE112007FCC75 /* AddItemViewModel.swift */; };
 		2C11FFBE2DCCFAFD007FCC75 /* DateEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C11FFBD2DCCFAFD007FCC75 /* DateEx.swift */; };
+		2C584F992DD1935500E96347 /* ItemDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C584F982DD1935500E96347 /* ItemDetailViewModel.swift */; };
+		2C584F9B2DD2F18000E96347 /* ImageEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C584F9A2DD2F18000E96347 /* ImageEx.swift */; };
+		2C584F9D2DD336DE00E96347 /* AddPetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C584F9C2DD336DE00E96347 /* AddPetViewModel.swift */; };
+		2C584F9F2DD3395A00E96347 /* AddPlantViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C584F9E2DD3395A00E96347 /* AddPlantViewModel.swift */; };
+		2C584FA12DD3398200E96347 /* AddPlantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C584FA02DD3398200E96347 /* AddPlantView.swift */; };
+		2C584FA32DD339B100E96347 /* AddVehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C584FA22DD339B100E96347 /* AddVehicle.swift */; };
+		2C584FA52DD339CD00E96347 /* AddVehicleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C584FA42DD339CD00E96347 /* AddVehicleViewModel.swift */; };
 		2C839AAD2DC75E9B00350073 /* NestifyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C839AAC2DC75E9B00350073 /* NestifyApp.swift */; };
 		2C839AAF2DC75E9B00350073 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C839AAE2DC75E9B00350073 /* ContentView.swift */; };
 		2C839AB12DC75E9C00350073 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C839AB02DC75E9C00350073 /* Assets.xcassets */; };
@@ -43,10 +54,21 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2C05C99F2DCE25A6002E5242 /* ListHouseholdItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListHouseholdItemView.swift; sourceTree = "<group>"; };
+		2C05C9A12DCE2927002E5242 /* GenericListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericListViewModel.swift; sourceTree = "<group>"; };
+		2C05C9A32DCE2AF6002E5242 /* GenericListview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericListview.swift; sourceTree = "<group>"; };
+		2C05C9A62DCE2F01002E5242 /* ItemDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailView.swift; sourceTree = "<group>"; };
 		2C11FFB72DCAFBB1007FCC75 /* schema.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = schema.swift; sourceTree = "<group>"; };
 		2C11FFB92DCAFEDE007FCC75 /* RealmMangager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmMangager.swift; sourceTree = "<group>"; };
 		2C11FFBB2DCCE112007FCC75 /* AddItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemViewModel.swift; sourceTree = "<group>"; };
 		2C11FFBD2DCCFAFD007FCC75 /* DateEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateEx.swift; sourceTree = "<group>"; };
+		2C584F982DD1935500E96347 /* ItemDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailViewModel.swift; sourceTree = "<group>"; };
+		2C584F9A2DD2F18000E96347 /* ImageEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageEx.swift; sourceTree = "<group>"; };
+		2C584F9C2DD336DE00E96347 /* AddPetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPetViewModel.swift; sourceTree = "<group>"; };
+		2C584F9E2DD3395A00E96347 /* AddPlantViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlantViewModel.swift; sourceTree = "<group>"; };
+		2C584FA02DD3398200E96347 /* AddPlantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlantView.swift; sourceTree = "<group>"; };
+		2C584FA22DD339B100E96347 /* AddVehicle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVehicle.swift; sourceTree = "<group>"; };
+		2C584FA42DD339CD00E96347 /* AddVehicleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVehicleViewModel.swift; sourceTree = "<group>"; };
 		2C839AA92DC75E9B00350073 /* Nestify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nestify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C839AAC2DC75E9B00350073 /* NestifyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NestifyApp.swift; sourceTree = "<group>"; };
 		2C839AAE2DC75E9B00350073 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -94,6 +116,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C05C99E2DCE2588002E5242 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				2C05C99F2DCE25A6002E5242 /* ListHouseholdItemView.swift */,
+				2C05C9A32DCE2AF6002E5242 /* GenericListview.swift */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		2C05C9A52DCE2EF1002E5242 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				2C05C9A62DCE2F01002E5242 /* ItemDetailView.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
 		2C11FFB62DCAFBA6007FCC75 /* Schema */ = {
 			isa = PBXGroup;
 			children = (
@@ -150,6 +189,8 @@
 		2C839ABA2DC75EC300350073 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				2C05C9A52DCE2EF1002E5242 /* Detail */,
+				2C05C99E2DCE2588002E5242 /* List */,
 				2C839AE52DC7647300350073 /* Add */,
 				2C839ADA2DC7625900350073 /* Shared */,
 				2C839ABF2DC75F0700350073 /* CustomTabBar.swift */,
@@ -162,6 +203,11 @@
 			isa = PBXGroup;
 			children = (
 				2C11FFBB2DCCE112007FCC75 /* AddItemViewModel.swift */,
+				2C05C9A12DCE2927002E5242 /* GenericListViewModel.swift */,
+				2C584F982DD1935500E96347 /* ItemDetailViewModel.swift */,
+				2C584F9C2DD336DE00E96347 /* AddPetViewModel.swift */,
+				2C584F9E2DD3395A00E96347 /* AddPlantViewModel.swift */,
+				2C584FA42DD339CD00E96347 /* AddVehicleViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -180,6 +226,7 @@
 				2C839AE32DC7642800350073 /* ColorEx.swift */,
 				2C839AEF2DC8E68100350073 /* ViewEx.swift */,
 				2C11FFBD2DCCFAFD007FCC75 /* DateEx.swift */,
+				2C584F9A2DD2F18000E96347 /* ImageEx.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -206,6 +253,8 @@
 				2C839AE62DC7647D00350073 /* AddMenu.swift */,
 				2C839AF52DC8EADD00350073 /* AddItemView.swift */,
 				2CE500992DC9B2CA00CCEDE1 /* AddPetView.swift */,
+				2C584FA02DD3398200E96347 /* AddPlantView.swift */,
+				2C584FA22DD339B100E96347 /* AddVehicle.swift */,
 			);
 			path = Add;
 			sourceTree = "<group>";
@@ -371,21 +420,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C05C9A02DCE25A6002E5242 /* ListHouseholdItemView.swift in Sources */,
 				2CE5009E2DC9BE7000CCEDE1 /* CustomNavigation.swift in Sources */,
 				2C839AF62DC8EADD00350073 /* AddItemView.swift in Sources */,
 				2CE500A62DCA098D00CCEDE1 /* common.swift in Sources */,
+				2C584F9F2DD3395A00E96347 /* AddPlantViewModel.swift in Sources */,
 				2C839AAF2DC75E9B00350073 /* ContentView.swift in Sources */,
 				2C11FFB82DCAFBB1007FCC75 /* schema.swift in Sources */,
 				2C839AFB2DC8EFE600350073 /* NavigationCoordinator.swift in Sources */,
 				2CE500A32DCA06BE00CCEDE1 /* DatePicker.swift in Sources */,
+				2C584F9B2DD2F18000E96347 /* ImageEx.swift in Sources */,
+				2C05C9A72DCE2F01002E5242 /* ItemDetailView.swift in Sources */,
 				2CE500A02DC9C2EC00CCEDE1 /* ImagePickerView.swift in Sources */,
 				2C839AFD2DC8F1BE00350073 /* AppSheet.swift in Sources */,
 				2C839ADC2DC762BA00350073 /* HomeHeaderView.swift in Sources */,
 				2C839AEA2DC764AD00350073 /* CategoryRepository.swift in Sources */,
 				2C839AEE2DC8E63E00350073 /* CustomDropdown.swift in Sources */,
+				2C584F9D2DD336DE00E96347 /* AddPetViewModel.swift in Sources */,
 				2C11FFBC2DCCE112007FCC75 /* AddItemViewModel.swift in Sources */,
+				2C584FA12DD3398200E96347 /* AddPlantView.swift in Sources */,
 				2C839AC02DC75F0700350073 /* CustomTabBar.swift in Sources */,
 				2C11FFBA2DCAFEDE007FCC75 /* RealmMangager.swift in Sources */,
+				2C05C9A42DCE2AF6002E5242 /* GenericListview.swift in Sources */,
 				2C839AF42DC8E77200350073 /* FormConfig.swift in Sources */,
 				2C11FFBE2DCCFAFD007FCC75 /* DateEx.swift in Sources */,
 				2C839AFF2DC8F25500350073 /* SheetCoordinator.swift in Sources */,
@@ -394,10 +450,14 @@
 				2C839ADE2DC762D400350073 /* OverviewCard.swift in Sources */,
 				2C839AE42DC7642800350073 /* ColorEx.swift in Sources */,
 				2C839AF82DC8EF8000350073 /* AppRoute.swift in Sources */,
+				2C584FA52DD339CD00E96347 /* AddVehicleViewModel.swift in Sources */,
+				2C584F992DD1935500E96347 /* ItemDetailViewModel.swift in Sources */,
 				2C839AE72DC7647D00350073 /* AddMenu.swift in Sources */,
 				2C839AF22DC8E74E00350073 /* DynamicAddForm.swift in Sources */,
+				2C05C9A22DCE2927002E5242 /* GenericListViewModel.swift in Sources */,
 				2C839AEC2DC8E62E00350073 /* CustomTextField.swift in Sources */,
 				2CE5009A2DC9B2CA00CCEDE1 /* AddPetView.swift in Sources */,
+				2C584FA32DD339B100E96347 /* AddVehicle.swift in Sources */,
 				2C839AE22DC7635300350073 /* CategoryCard.swift in Sources */,
 				2C839AE02DC7633900350073 /* MonthBudgetView.swift in Sources */,
 				2C839AAD2DC75E9B00350073 /* NestifyApp.swift in Sources */,

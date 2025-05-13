@@ -38,9 +38,18 @@ struct ContentView: View {
                 switch route {
                 case .addMenuItem:
                     AddItemView()
+                case .listItem:
+                    HouseholdItemsView()
+                case .addPet:
+                    AddPetView()
+                case .addPlant:
+                    AddPlantView()
+                case .addVehicle:
+                    AddVehicleView()
                 }
             }
         }
+
         .environmentObject(sheetCoordinator)
         .environmentObject(coordinator)
     }

@@ -8,5 +8,9 @@
 import Foundation
 enum AppRoute: Hashable {
     case addMenuItem
+    case listItem
+    case addPet
+    case addPlant
+    case addVehicle
 //    case detailItem(id: UUID)
 }

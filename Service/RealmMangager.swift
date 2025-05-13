@@ -64,6 +64,9 @@ class RealmManager: ObservableObject {
         )
         
         Realm.Configuration.defaultConfiguration = config
+        if let fileURL = Realm.Configuration.defaultConfiguration.fileURL {
+            print("Realm file path: \(fileURL)")
+        }
     }
 
     // MARK: - Helper Functions
@@ -138,6 +141,7 @@ class RealmManager: ObservableObject {
 
     func entityPublisher<T: Object>(_ type: T.Type) -> AnyPublisher<Results<T>, Error> {
         Future<Results<T>, Error> { [weak self] promise in
+            print("Started load for \(T.self)")
             guard let self = self else {
                 promise(.failure(NSError(domain: "RealmManager", code: 1, userInfo: [NSLocalizedDescriptionKey: "Self is nil"])))
                 return
@@ -145,14 +149,24 @@ class RealmManager: ObservableObject {
             do {
                 let realm = try Realm()
                 let results = realm.objects(type)
+                
+                // Chỉ thông báo khi có THAY ĐỔI thực sự, không thông báo khi load ban đầu
                 let token = results.observe { changes in
                     switch changes {
-                    case .initial, .update:
-                        self.dataChangeSubject.send()
+                    case .initial:
+                        // KHÔNG thông báo khi lấy dữ liệu ban đầu
+                        print("Initial data loaded for \(T.self)")
+                    case .update(_, let deletions, let insertions, let modifications):
+                        // Chỉ thông báo khi có thay đổi thực sự
+                        if !deletions.isEmpty || !insertions.isEmpty || !modifications.isEmpty {
+                            print("Data changed for \(T.self): deletions=\(deletions.count), insertions=\(insertions.count), modifications=\(modifications.count)")
+                            self.dataChangeSubject.send()
+                        }
                     case .error(let error):
                         self.errorSubject.send(error)
                     }
                 }
+                
                 self.notificationTokens.append(token)
                 promise(.success(results))
             } catch {

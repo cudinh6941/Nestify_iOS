@@ -8,6 +8,7 @@
 import Foundation
 import RealmSwift
 import Combine
+import SwiftUI
 class AddItemViewModel: ObservableObject {
     @Published var name: String = ""
     @Published var brand: String = ""
@@ -19,8 +20,8 @@ class AddItemViewModel: ObservableObject {
     @Published var location: String = ""
     @Published var price: String = ""
     @Published var quantity: String = "1"
-    @Published var imageUrl: String? = nil
-    
+    @Published var selectedImage: UIImage? = nil
+    @Published var imageData: Data? = nil
     // Output
     @Published var isLoading: Bool = false
     @Published var errorMessage: String? = nil
@@ -52,7 +53,7 @@ class AddItemViewModel: ObservableObject {
         guard isFormValid else {return}
         isLoading = true
         errorMessage = nil
-        
+         
         let householdItem = createHouseholdItem()
         
         realmManager.performTransactionPublisher {
@@ -101,7 +102,7 @@ class AddItemViewModel: ObservableObject {
         item.location = location
         item.purchasePrice = Double(price) ?? 0.0
         item.quantity = Int(quantity) ?? 1
-        item.imageUrl = imageUrl
+        item.imageData = imageData
         item.status = "active"
         item.createdAt = Date()
         item.updatedAt = Date()

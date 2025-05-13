@@ -56,17 +56,15 @@ class BaseItem: Object {
     @Persisted var descriptionText: String?
     @Persisted var categoryId: String?
     @Persisted var location: String?
-    @Persisted var imageUrl: String?
+    @Persisted var imageData: Data?
     @Persisted var status: String = "active"
     @Persisted var tags: List<String>
     @Persisted var quantity: Int = 1
     @Persisted var createdAt: Date
     @Persisted var updatedAt: Date
     
-    // Virtual property - loại đối tượng, được ghi đè bởi các lớp con
-    var itemType: String {
-        return "base"
-    }
+    // Chuyển itemType thành thuộc tính được lưu
+    @Persisted var itemType: String = "base"
     
     // Liên kết với User và Category
     var user: LinkingObjects<User> {
@@ -89,14 +87,24 @@ class HouseholdItem: BaseItem {
     @Persisted var warrantyExpiryDate: Date?
     @Persisted var purchasePrice: Double?
     @Persisted var currentValue: Double?
-    @Persisted var condition: String? // new, good, fair, poor
-    @Persisted var maintenanceInterval: Int? // Số ngày giữa các lần bảo trì
+    @Persisted var condition: String?
+    @Persisted var maintenanceInterval: Int?
     @Persisted var lastMaintenanceDate: Date?
     @Persisted var nextMaintenanceDate: Date?
     
-    override var itemType: String {
-        return "household"
+    // Override hàm này để set giá trị mặc định khi object được tạo
+    override static func primaryKey() -> String? {
+        return "id"
     }
+    
+    // Set giá trị mặc định cho itemType
+    override init() {
+        super.init()
+        self.itemType = "household"
+    }
+    
+    // Cần có required init vì Realm yêu cầu
+
 }
 
 // Pet - Thú cưng
@@ -114,8 +122,9 @@ class Pet: BaseItem {
     @Persisted var medicalConditions: String?
     @Persisted var medications: String?
     
-    override var itemType: String {
-        return "pet"
+    override init() {
+        super.init()
+        self.itemType = "pet"
     }
 }
 
@@ -123,60 +132,63 @@ class Pet: BaseItem {
 class Plant: BaseItem {
     @Persisted var species: String?
     @Persisted var plantingDate: Date?
-    @Persisted var wateringFrequency: Int? // Số ngày giữa các lần tưới nước
+    @Persisted var wateringFrequency: Int?
     @Persisted var lastWateringDate: Date?
     @Persisted var nextWateringDate: Date?
-    @Persisted var fertilizingFrequency: Int? // Số ngày giữa các lần bón phân
+    @Persisted var fertilizingFrequency: Int?
     @Persisted var lastFertilizingDate: Date?
     @Persisted var nextFertilizingDate: Date?
-    @Persisted var sunlightRequirements: String? // full_sun, partial_shade, shade
+    @Persisted var sunlightRequirements: String?
     @Persisted var soilType: String?
     @Persisted var notes: String?
     
-    override var itemType: String {
-        return "plant"
+    override init() {
+        super.init()
+        self.itemType = "plant"
     }
 }
 
 // Document - Tài liệu
 class Document: BaseItem {
-    @Persisted var documentType: String? // passport, id_card, contract, etc.
+    @Persisted var documentType: String?
     @Persisted var documentNumber: String?
     @Persisted var issueDate: Date?
     @Persisted var expiryDate: Date?
     @Persisted var issuingAuthority: String?
-    @Persisted var fileUrl: String? // URL để lưu trữ tệp số hóa
-    @Persisted var reminderDays: Int? // Số ngày trước khi hết hạn để nhắc nhở
+    @Persisted var fileUrl: String?
+    @Persisted var reminderDays: Int?
     @Persisted var isConfidential: Bool = false
     @Persisted var notes: String?
     
-    override var itemType: String {
-        return "document"
+    override init() {
+        super.init()
+        self.itemType = "document"
     }
 }
 
 // Vehicle - Phương tiện
 class Vehicle: BaseItem {
-    @Persisted var vehicleType: String? // car, motorcycle, bicycle, etc.
+    @Persisted var vehicleType: String?
     @Persisted var make: String?
     @Persisted var model: String?
     @Persisted var year: Int?
     @Persisted var licensePlate: String?
-    @Persisted var vin: String? // Vehicle Identification Number
+    @Persisted var vin: String?
     @Persisted var color: String?
     @Persisted var purchaseDate: Date?
     @Persisted var purchasePrice: Double?
-    @Persisted var currentOdometer: Double? // Kilometers or miles
+    @Persisted var currentOdometer: Double?
     @Persisted var insuranceExpiryDate: Date?
     @Persisted var registrationExpiryDate: Date?
     @Persisted var lastServiceDate: Date?
     @Persisted var nextServiceDate: Date?
-    @Persisted var serviceInterval: Int? // Distance hoặc ngày
-    @Persisted var fuelType: String? // gasoline, diesel, electric, hybrid
-    @Persisted var storageLocation: String? // garage, street, etc.
+    @Persisted var serviceInterval: Int?
+    @Persisted var fuelType: String?
+    @Persisted var storageLocation: String?
     
-    override var itemType: String {
-        return "vehicle"
+    override init() {
+        super.init()
+        self.itemType = "vehicle"
     }
 }
 

@@ -2,43 +2,131 @@ import SwiftUI
 import PhotosUI
 
 struct ImagePickerView: View {
-    @State private var selectedImage: UIImage?
+    @Binding var selectedImage: UIImage?
+    @Binding var imageData: Data? // Đổi tên từ imagedata sang imageData để nhất quán
     @State private var isShowingActionSheet = false
     @State private var isShowingPhotoLibraryPicker = false
     @State private var isShowingCameraPicker = false
     
+    // Loại bỏ viewModel từ ImagePickerView để tránh xung đột
+    // @StateObject private var viewModel = AddItemViewModel()
+    
+    // Theme colors
+    private let backgroundColor = Color(hex: "#121212")
+    private let cardBackgroundColor = Color(hex: "#1E1E1E")
+    private let inputBackgroundColor = Color(hex: "#2A2A2A")
+    private let primaryColor = Color(hex: "#4A9FF5")
+    private let secondaryColor = Color(hex: "#2ECC71")
+    private let accentColor = Color(hex: "#F1C40F")
+    private let dangerColor = Color(hex: "#E74C3C")
+    private let textPrimaryColor = Color.white
+    private let textSecondaryColor = Color(hex: "#B3B3B3")
+    private let textPlaceholderColor = Color(hex: "#777777")
+    private let dividerColor = Color(hex: "#333333")
+    
     var body: some View {
-        VStack {
-            if let selectedImage {
-                Image(uiImage: selectedImage)
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 140, height: 140)
-                    .clipShape(Circle())
-                    .overlay(Circle().stroke(Color.blue, lineWidth: 2))
-                    .shadow(radius: 5)
-            } else {
-                Image(systemName: "photo")
-                    .frame(width: 140, height: 140)
-                    .foregroundColor(.gray)
-                    .opacity(0.5)
-                    .background(Circle().fill(Color.gray.opacity(0.1)))
-                    .overlay(Circle().stroke(Color.green, lineWidth: 2))
+        VStack(spacing: 12) {
+            ZStack {
+                RoundedRectangle(cornerRadius: 20)
+                    .fill(cardBackgroundColor)
+                    .frame(height: 200)
+                    .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
+                
+                if let image = selectedImage {
+                    // Display selected image with proper scaling
+                    Image(uiImage: image)
+                        .resizable()
+                        .scaledToFill()
+                        .frame(height: 200)
+                        .clipShape(RoundedRectangle(cornerRadius: 20))
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 20)
+                                .stroke(primaryColor.opacity(0.3), lineWidth: 2)
+                        )
+                } else if let data = imageData, let uiImage = UIImage(data: data) {
+                    // Display image from Data if available
+                    Image(uiImage: uiImage)
+                        .resizable()
+                        .scaledToFill()
+                        .frame(height: 200)
+                        .clipShape(RoundedRectangle(cornerRadius: 20))
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 20)
+                                .stroke(primaryColor.opacity(0.3), lineWidth: 2)
+                        )
+                } else {
+                    // No image placeholder
+                    VStack(spacing: 12) {
+                        Image(systemName: "camera.fill")
+                            .font(.system(size: 36))
+                            .foregroundColor(primaryColor.opacity(0.8))
+                        
+                        Text("Thêm ảnh vật dụng")
+                            .font(.system(size: 16, weight: .medium, design: .rounded))
+                            .foregroundColor(textSecondaryColor)
+                    }
+                }
+                
+                // Upload button overlay in bottom right
+                VStack {
+                    Spacer()
+                    HStack {
+                        Spacer()
+                        Button(action: {
+                            isShowingActionSheet = true
+                        }) {
+                            ZStack {
+                                Circle()
+                                    .fill((selectedImage == nil && imageData == nil) ? secondaryColor : primaryColor)
+                                    .frame(width: 44, height: 44)
+                                    .shadow(color: ((selectedImage == nil && imageData == nil) ? secondaryColor : primaryColor).opacity(0.3), radius: 5, x: 0, y: 2)
+                                
+                                Image(systemName: (selectedImage == nil && imageData == nil) ? "plus" : "pencil")
+                                    .font(.system(size: 18, weight: .bold))
+                                    .foregroundColor(.white)
+                            }
+                        }
+                        .padding(16)
+                    }
+                }
+                
+                // "Remove" button if image exists
+                if selectedImage != nil || imageData != nil {
+                    VStack {
+                        HStack {
+                            Spacer()
+                            Button(action: {
+                                withAnimation(.spring()) {
+                                    selectedImage = nil
+                                    imageData = nil
+                                }
+                            }) {
+                                ZStack {
+                                    Circle()
+                                        .fill(Color(hex: "#E74C3C"))
+                                        .frame(width: 32, height: 32)
+                                        .shadow(color: Color.black.opacity(0.2), radius: 3, x: 0, y: 2)
+                                    
+                                    Image(systemName: "xmark")
+                                        .font(.system(size: 14, weight: .bold))
+                                        .foregroundColor(.white)
+                                }
+                            }
+                            .padding(16)
+                        }
+                        Spacer()
+                    }
+                }
             }
             
-            Button {
-                isShowingActionSheet = true
-            } label: {
-                HStack {
-                    Image(systemName: "photo.on.rectangle")
-                }
-                .padding()
-                .background(Color.blue)
-                .foregroundColor(.white)
-                .cornerRadius(10)
-            }
+            Text((selectedImage == nil && imageData == nil) ?
+                "Thêm ảnh để dễ dàng nhận diện vật dụng của bạn" :
+                "Chạm vào ảnh để xem chi tiết")
+                .font(.system(size: 14, design: .rounded))
+                .foregroundColor(textSecondaryColor)
+                .multilineTextAlignment(.center)
+                .padding(.horizontal)
         }
-        .padding()
         .confirmationDialog("Chọn nguồn ảnh", isPresented: $isShowingActionSheet, titleVisibility: .visible) {
             Button("Chọn từ thư viện") {
                 isShowingPhotoLibraryPicker = true
@@ -48,19 +136,30 @@ struct ImagePickerView: View {
                 isShowingCameraPicker = true
             }
             
+            if selectedImage != nil || imageData != nil {
+                Button("Xóa ảnh hiện tại", role: .destructive) {
+                    withAnimation {
+                        selectedImage = nil
+                        imageData = nil
+                    }
+                }
+            }
+            
             Button("Hủy", role: .cancel) { }
         }
         .sheet(isPresented: $isShowingPhotoLibraryPicker) {
-            ImagePicker(selectedImage: $selectedImage)
+            ImagePicker(selectedImage: $selectedImage, imageData: $imageData)
         }
         .sheet(isPresented: $isShowingCameraPicker) {
-            CameraImagePicker(selectedImage: $selectedImage)
+            CameraImagePicker(selectedImage: $selectedImage, imageData: $imageData)
         }
     }
 }
 
+
 struct ImagePicker: UIViewControllerRepresentable {
     @Binding var selectedImage: UIImage?
+    @Binding var imageData: Data?
     @Environment(\.presentationMode) private var presentationMode
     
     func makeUIViewController(context: Context) -> PHPickerViewController {
@@ -96,6 +195,8 @@ struct ImagePicker: UIViewControllerRepresentable {
                     DispatchQueue.main.async {
                         guard let image = image as? UIImage, error == nil else { return }
                         self?.parent.selectedImage = image
+                        // Cập nhật cả imageData
+                        self?.parent.imageData = image.jpegData(compressionQuality: 0.5)
                     }
                 }
             }
@@ -106,6 +207,7 @@ struct ImagePicker: UIViewControllerRepresentable {
 // Camera Image Picker
 struct CameraImagePicker: UIViewControllerRepresentable {
     @Binding var selectedImage: UIImage?
+    @Binding var imageData: Data?
     @Environment(\.presentationMode) private var presentationMode
     
     func makeUIViewController(context: Context) -> UIImagePickerController {
@@ -131,6 +233,8 @@ struct CameraImagePicker: UIViewControllerRepresentable {
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
             if let image = info[.originalImage] as? UIImage {
                 parent.selectedImage = image
+                // Cập nhật cả imageData
+                parent.imageData = image.jpegData(compressionQuality: 0.5)
             }
             
             parent.presentationMode.wrappedValue.dismiss()
@@ -142,15 +246,3 @@ struct CameraImagePicker: UIViewControllerRepresentable {
     }
 }
 
-// Permissions Info.plist requirements
-/*
- Add these keys to your Info.plist file:
- 
- For camera access:
- <key>NSCameraUsageDescription</key>
- <string>App needs camera access to take photos</string>
- 
- For photo library access:
- <key>NSPhotoLibraryUsageDescription</key>
- <string>App needs photo library access to select photos</string>
- */

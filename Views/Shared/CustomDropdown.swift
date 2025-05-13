@@ -11,149 +11,105 @@ struct Option: Identifiable, Equatable {
 }
 
 struct CustomDropdown: View {
+    let icon: String
     let label: String
     @Binding var value: String
-    let onValueChange: (String) -> Void
     let options: [Option]
-    var placeholder: String = "Chọn một mục"
-    var isInvalid: Bool = false
-    var errorMessage: String = ""
-    var isRequired: Bool = false
+    var primaryColor: Color
     
-    @State private var isOpen: Bool = false
-    @State private var animationAmount: Double = 0
+    @State private var isExpanded = false
+    private let backgroundColor = Color(hex: "#2A2A2A")
     
-    // Tách các view thành các component nhỏ hơn
-    private var labelView: some View {
-        HStack {
-            Text(label)
-                .fontWeight(.bold)
-                .foregroundColor(Color(.darkGray))
-            
-            if isRequired {
-                Text("*")
-                    .foregroundColor(.red)
-                    .fontWeight(.bold)
-            }
-        }
-    }
-    
-    private var dropdownButtonView: some View {
-        Button(action: {
-            withAnimation(.spring()) {
-                isOpen.toggle()
-                animationAmount = isOpen ? 1 : 0
+    var body: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            // Label
+            HStack(spacing: 6) {
+                Image(systemName: icon)
+                    .font(.system(size: 14))
+                    .foregroundColor(primaryColor)
                 
-                // Ẩn bàn phím nếu đang hiển thị
-                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-            }
-        }) {
-            HStack {
-                Text(selectedLabel)
-                    .foregroundColor(value.isEmpty ? Color.gray : Color.black)
+                Text(label)
+                    .font(.system(size: 14, weight: .medium, design: .rounded))
+                    .foregroundColor(Color.white.opacity(0.9))
                 
                 Spacer()
                 
-                Image(systemName: isOpen ? "chevron.up" : "chevron.down")
-                    .foregroundColor(Color.gray)
-                    .font(.system(size: 14))
+                Image(systemName: value.isEmpty ? "exclamationmark.circle.fill" : "checkmark.circle.fill")
+                    .font(.system(size: 12))
+                    .foregroundColor(value.isEmpty ? Color(hex: "#E74C3C") : Color(hex: "#2ECC71"))
             }
-            .padding(.horizontal, 12)
-            .padding(.vertical, 14)
-            .background(Color(UIColor.systemGray6))
-            .cornerRadius(8)
-            .overlay(
-                RoundedRectangle(cornerRadius: 8)
-                    .stroke(isInvalid ? Color.red : Color(UIColor.systemGray4), lineWidth: 1)
-            )
-        }
-        .buttonStyle(PlainButtonStyle())
-    }
-    
-    // Tách danh sách options thành một view riêng
-    private var optionsListView: some View {
-        ScrollView {
-            VStack(spacing: 0) {
-                ForEach(options) { option in
-                    OptionItemView(
-                        option: option,
-                        isSelected: option.value == value,
-                        onSelect: {
-                            value = option.value
-                            onValueChange(option.value)
-                            withAnimation(.spring()) {
-                                isOpen = false
-                                animationAmount = 0
-                            }
-                        }
-                    )
+            
+            // Dropdown button
+            Button(action: {
+                withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
+                    isExpanded.toggle()
+                }
+            }) {
+                HStack {
+                    Text(options.first(where: { $0.value == value })?.label ?? options.first?.label ?? "")
+                        .font(.system(size: 16, design: .rounded))
+                        .foregroundColor(value.isEmpty ? Color(hex: "#777777") : Color.white)
                     
-                    if option != options.last {
-                        Divider()
-                            .background(Color(UIColor.systemGray5))
-                    }
+                    Spacer()
+                    
+                    Image(systemName: "chevron.down")
+                        .font(.system(size: 14, weight: .semibold))
+                        .foregroundColor(Color.gray)
+                        .rotationEffect(Angle(degrees: isExpanded ? 180 : 0))
                 }
+                .padding(.vertical, 12)
+                .padding(.horizontal, 16)
+                .background(backgroundColor)
+                .cornerRadius(12)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 12)
+                        .stroke(value.isEmpty ? Color(hex: "#E74C3C").opacity(0.5) : Color.clear, lineWidth: value.isEmpty ? 1.5 : 0)
+                )
             }
-        }
-        .frame(maxHeight: 200)
-        .background(Color.white)
-        .cornerRadius(8)
-        .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
-        .offset(y: 60)
-        .opacity(animationAmount)
-        .scaleEffect(y: animationAmount, anchor: .top)
-    }
-    
-    private var errorView: some View {
-        Group {
-            if isInvalid && !errorMessage.isEmpty {
-                Text(errorMessage)
-                    .font(.caption)
-                    .foregroundColor(.red)
-                    .padding(.top, 4)
-            }
-        }
-    }
-    
-    var body: some View {
-        VStack(alignment: .leading, spacing: 4) {
-            // Label
-            labelView
             
-            // Dropdown button and options
-            ZStack(alignment: .top) {
-                // Main button
-                dropdownButtonView
-                
-                // Dropdown options
-                if isOpen {
-                    optionsListView
-                }
-            }
-            .onTapGesture {}  // Chặn sự kiện tap để không đóng dropdown
-            
-            // Error message
-            errorView
-        }
-        .background(
-            Color.clear
-                .contentShape(Rectangle())
-                .onTapGesture {
-                    if isOpen {
-                        withAnimation(.spring()) {
-                            isOpen = false
-                            animationAmount = 0
+            // Dropdown options
+            if isExpanded {
+                VStack(spacing: 0) {
+                    ForEach(options.filter { $0.value != "" }, id: \.value) { option in
+                        Button(action: {
+                            value = option.value
+                            withAnimation {
+                                isExpanded = false
+                            }
+                        }) {
+                            HStack {
+                                Text(option.label)
+                                    .font(.system(size: 16, design: .rounded))
+                                    .foregroundColor(.white)
+                                
+                                Spacer()
+                                
+                                if value == option.value {
+                                    Image(systemName: "checkmark")
+                                        .font(.system(size: 14))
+                                        .foregroundColor(primaryColor)
+                                }
+                            }
+                            .padding(.vertical, 12)
+                            .padding(.horizontal, 16)
+                            .background(value == option.value ? primaryColor.opacity(0.2) : Color.clear)
+                        }
+                        .buttonStyle(PlainButtonStyle())
+                        
+                        if option.value != options.last?.value {
+                            Divider()
+                                .background(Color(hex: "#333333"))
+                                .padding(.horizontal, 12)
                         }
                     }
                 }
-        )
-    }
-    
-    private var selectedLabel: String {
-        if let selectedOption = options.first(where: { $0.value == value }) {
-            return selectedOption.label
+                .background(Color(hex: "#1E1E1E"))
+                .cornerRadius(12)
+                .transition(.opacity)
+                .shadow(color: Color.black.opacity(0.2), radius: 8, x: 0, y: 4)
+                .padding(.top, 4)
+            }
         }
-        return placeholder
     }
 }
 

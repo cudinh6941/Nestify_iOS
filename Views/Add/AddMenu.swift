@@ -36,7 +36,7 @@ struct AddMenuView: View {
                     ForEach(categories) { category in
                         Button(action: {
                             sheetCoordinator.dismiss()
-                            coordinator.navigate(to: .addMenuItem)
+                            coordinator.navigate(to: category.navigate)
                         }) {
                             HStack(spacing: 16) {
                                 Circle()

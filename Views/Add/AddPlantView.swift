@@ -1,42 +1,43 @@
 //
-//  AddPetView.swift
+//  AddPlantView.swift
 //  Nestify
 //
-//  Created by pham kha dinh on 6/5/25.
+//  Created by pham kha dinh on 13/5/25.
 //
 
 import SwiftUI
 import Combine
 
-struct AddPetView: View {
-    @StateObject private var viewModel = AddPetViewModel()
+struct AddPlantView: View {
+    @StateObject private var viewModel = AddPlantViewModel()
     @Environment(\.dismiss) var dismiss
     
     // Dropdown options
-    let species: [Option] = [
-        Option(label: "Chọn loài", value: ""),
-        Option(label: "Chó", value: "dog"),
-        Option(label: "Mèo", value: "cat"),
-        Option(label: "Chim", value: "bird"),
-        Option(label: "Cá", value: "fish"),
-        Option(label: "Bò sát", value: "reptile"),
-        Option(label: "Khác", value: "other")
-    ]
-    
-    let genders: [Option] = [
-        Option(label: "Chọn giới tính", value: ""),
-        Option(label: "Đực", value: "male"),
-        Option(label: "Cái", value: "female"),
-        Option(label: "Không xác định", value: "unknown")
-    ]
-    
     let locations: [Option] = [
         Option(label: "Chọn vị trí", value: ""),
         Option(label: "Phòng khách", value: "living_room"),
         Option(label: "Phòng ngủ", value: "bedroom"),
-        Option(label: "Sân", value: "yard"),
-        Option(label: "Lồng nuôi", value: "cage"),
-        Option(label: "Chuồng ngoài trời", value: "outdoor_pen")
+        Option(label: "Nhà bếp", value: "kitchen"),
+        Option(label: "Ban công", value: "balcony"),
+        Option(label: "Sân vườn", value: "garden"),
+        Option(label: "Phòng làm việc", value: "office")
+    ]
+    
+    let sunlightRequirements: [Option] = [
+        Option(label: "Chọn nhu cầu ánh sáng", value: ""),
+        Option(label: "Nhiều nắng", value: "full_sun"),
+        Option(label: "Nắng một phần", value: "partial_sun"),
+        Option(label: "Bóng râm", value: "shade"),
+        Option(label: "Ít ánh sáng", value: "low_light")
+    ]
+    
+    let soilTypes: [Option] = [
+        Option(label: "Chọn loại đất", value: ""),
+        Option(label: "Đất thông thường", value: "regular"),
+        Option(label: "Đất pha cát", value: "sandy"),
+        Option(label: "Đất sét", value: "clay"),
+        Option(label: "Đất trồng xương rồng", value: "cactus"),
+        Option(label: "Đất giữ ẩm", value: "moisture_retaining")
     ]
     
     var body: some View {
@@ -69,42 +70,23 @@ struct AddPetView: View {
                     
                     // Name field with validation indicator
                     CustomTextField(
-                        icon: "pawprint.fill",
-                        label: "Tên thú cưng",
-                        placeholder: "Nhập tên thú cưng",
+                        icon: "leaf.fill",
+                        label: "Tên cây",
+                        placeholder: "Nhập tên cây",
                         text: $viewModel.name,
                         keyboardType: .default,
                         isValid: !viewModel.name.isEmpty
                     )
                     
-                    // Species dropdown
-                    CustomDropdown(
-                        icon: "hare.fill",
-                        label: "Loài",
-                        value: $viewModel.species,
-                        options: species,
-                        primaryColor: primaryColor
-                    )
-                    .zIndex(5)
-                    
-                    // Breed field
+                    // Species field
                     CustomTextField(
-                        icon: "peacesign",
-                        label: "Giống",
-                        placeholder: "Nhập giống thú cưng",
-                        text: $viewModel.breed,
-                        keyboardType: .default
+                        icon: "sparkles",
+                        label: "Loài",
+                        placeholder: "Nhập loài cây",
+                        text: $viewModel.species,
+                        keyboardType: .default,
+                        isValid: !viewModel.species.isEmpty
                     )
-                    
-                    // Gender dropdown
-                    CustomDropdown(
-                        icon: "person.fill",
-                        label: "Giới tính",
-                        value: $viewModel.gender,
-                        options: genders,
-                        primaryColor: primaryColor
-                    )
-                    .zIndex(4)
                     
                     // Location dropdown
                     CustomDropdown(
@@ -114,85 +96,90 @@ struct AddPetView: View {
                         options: locations,
                         primaryColor: primaryColor
                     )
+                    .zIndex(5)
+                    
+                    // Sunlight requirements dropdown
+                    CustomDropdown(
+                        icon: "sun.max.fill",
+                        label: "Nhu cầu ánh sáng",
+                        value: $viewModel.sunlightRequirements,
+                        options: sunlightRequirements,
+                        primaryColor: primaryColor
+                    )
+                    .zIndex(4)
+                    
+                    // Soil type dropdown
+                    CustomDropdown(
+                        icon: "square.3.layers.3d.down.right.fill",
+                        label: "Loại đất",
+                        value: $viewModel.soilType,
+                        options: soilTypes,
+                        primaryColor: primaryColor
+                    )
                     .zIndex(3)
                     
-                    // Date pickers
+                    // Watering section
+                    SectionHeader(title: "Lịch chăm sóc", icon: "drop.fill")
+                    
+                    // Watering frequency
+                    CustomTextField(
+                        icon: "drop.fill",
+                        label: "Tần suất tưới nước (ngày)",
+                        placeholder: "Nhập số ngày giữa các lần tưới",
+                        text: $viewModel.wateringFrequency,
+                        keyboardType: .numberPad
+                    )
+                    
+                    // Fertilizing frequency
+                    CustomTextField(
+                        icon: "leaf.arrow.circlepath",
+                        label: "Tần suất bón phân (ngày)",
+                        placeholder: "Nhập số ngày giữa các lần bón phân",
+                        text: $viewModel.fertilizingFrequency,
+                        keyboardType: .numberPad
+                    )
+                    
+                    // Date pickers in a card
                     VStack(spacing: 20) {
                         SectionHeader(title: "Thông tin thời gian", icon: "calendar")
                         
                         HStack(spacing: 16) {
-                            // Birth date
-                            CustomDatePicker(label: "Ngày sinh", date: Binding<Date?>(
-                                get: { viewModel.birthDate },
-                                set: { viewModel.birthDate = $0! }
+                            // Planting date
+                            CustomDatePicker(label: "Ngày trồng", date: Binding<Date?>(
+                                get: { viewModel.plantingDate },
+                                set: { viewModel.plantingDate = $0! }
                             ))
                             
-                            // Last vet visit
-                            CustomDatePicker(label: "Lần khám gần nhất", date: Binding<Date?>(
-                                get: { viewModel.lastVetVisit },
-                                set: { viewModel.lastVetVisit = $0! }
+                            // Last watering date
+                            CustomDatePicker(label: "Lần tưới gần nhất", date: Binding<Date?>(
+                                get: { viewModel.lastWateringDate },
+                                set: { viewModel.lastWateringDate = $0! }
                             ))
                         }
                         
                         HStack(spacing: 16) {
-                            // Last vaccination date
-                            CustomDatePicker(label: "Lần tiêm chủng gần nhất", date: Binding<Date?>(
-                                get: { viewModel.lastVaccinationDate },
-                                set: { viewModel.lastVaccinationDate = $0! }
-                            ))
-                            
-                            // Next vaccination date
-                            CustomDatePicker(label: "Lần tiêm chủng tiếp theo", date: Binding<Date?>(
-                                get: { viewModel.nextVaccinationDate },
-                                set: { viewModel.nextVaccinationDate = $0! }
+                            // Last fertilizing date
+                            CustomDatePicker(label: "Lần bón phân gần nhất", date: Binding<Date?>(
+                                get: { viewModel.lastFertilizingDate },
+                                set: { viewModel.lastFertilizingDate = $0! }
                             ))
                         }
                     }
                     .padding(.vertical, 8)
                     
-                    // Additional details section
-                    SectionHeader(title: "Thông tin chi tiết", icon: "doc.text.fill")
-                    
-                    // Weight
+                    // Notes field
                     CustomTextField(
-                        icon: "scalemass.fill",
-                        label: "Cân nặng (kg)",
-                        placeholder: "Nhập cân nặng",
-                        text: $viewModel.weight,
-                        keyboardType: .decimalPad
-                    )
-                    
-                    // Food preferences
-                    CustomTextField(
-                        icon: "fork.knife",
-                        label: "Thức ăn ưa thích",
-                        placeholder: "Nhập loại thức ăn",
-                        text: $viewModel.foodPreferences,
-                        keyboardType: .default
-                    )
-                    
-                    // Medical conditions
-                    CustomTextField(
-                        icon: "cross.case.fill",
-                        label: "Tình trạng sức khỏe",
-                        placeholder: "Nhập tình trạng sức khỏe (nếu có)",
-                        text: $viewModel.medicalConditions,
-                        keyboardType: .default
-                    )
-                    
-                    // Medications
-                    CustomTextField(
-                        icon: "pills.fill",
-                        label: "Thuốc đang dùng",
-                        placeholder: "Nhập thuốc đang dùng (nếu có)",
-                        text: $viewModel.medications,
+                        icon: "note.text",
+                        label: "Ghi chú",
+                        placeholder: "Thêm ghi chú về cây",
+                        text: $viewModel.notes,
                         keyboardType: .default
                     )
                     
                     // Save button with gradient and animation
                     Button(action: {
                         withAnimation {
-                            viewModel.savePet()
+                            viewModel.savePlant()
                         }
                     }) {
                         ZStack {
@@ -205,7 +192,7 @@ struct AddPetView: View {
                                     Image(systemName: "checkmark.circle.fill")
                                         .font(.system(size: 20))
                                     
-                                    Text("Lưu thú cưng")
+                                    Text("Lưu cây")
                                         .font(.system(size: 18, weight: .bold, design: .rounded))
                                 }
                                 .foregroundColor(.white)
@@ -243,7 +230,7 @@ struct AddPetView: View {
             }
         }
         .navigationBarBackButtonHidden()
-        .navigationTitle("Thêm thú cưng")
+        .navigationTitle("Thêm cây cối")
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
                 Button(action: {
@@ -255,16 +242,16 @@ struct AddPetView: View {
                 }
             }
         }
-//        .alert(isPresented: .init(
-//            get: { viewModel.errorMessage != nil },
-//            set: { if !$0 { viewModel.errorMessage = nil } }
-//        )) {
-//            Alert(
-//                title: Text("Lỗi"),
-//                message: Text(viewModel.errorMessage ?? "Đã xảy ra lỗi không xác định"),
-//                dismissButton: .default(Text("OK"))
-//            )
-//        }
+        .alert(isPresented: .init(
+            get: { viewModel.errorMessage != nil },
+            set: { if !$0 { viewModel.errorMessage = nil } }
+        )) {
+            Alert(
+                title: Text("Lỗi"),
+                message: Text(viewModel.errorMessage ?? "Đã xảy ra lỗi không xác định"),
+                dismissButton: .default(Text("OK"))
+            )
+        }
         .onChange(of: viewModel.isSuccess) { success in
             if success {
                 dismiss()
@@ -272,4 +259,3 @@ struct AddPetView: View {
         }
     }
 }
-

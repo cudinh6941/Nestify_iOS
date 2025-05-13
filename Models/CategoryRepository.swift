@@ -14,13 +14,14 @@ struct CategoryItem: Identifiable {
     let label: String
     let iconName: String
     let color: Color
+    let navigate: AppRoute
 }
 
 struct CategoryRepository {
     static let sharedCategories: [CategoryItem] = [
-        CategoryItem(id:"furniture", title: "Đồ dùng", count: 24, label: "vật phẩm", iconName: "chair.lounge.fill", color: .blue),
-        CategoryItem(id:"pet", title: "Vật nuôi", count: 2, label: "thú cưng", iconName: "pawprint.fill", color: .orange),
-        CategoryItem(id:"plant", title: "Cây cối", count: 8, label: "cây", iconName: "leaf.fill", color: .green),
-        CategoryItem(id:"expend", title: "Chi tiêu", count: 15, label: "khoản", iconName: "creditcard.fill", color: .purple)
+        CategoryItem(id:"furniture", title: "Đồ dùng", count: 24, label: "vật phẩm", iconName: "chair.lounge.fill", color: .blue, navigate: .listItem),
+        CategoryItem(id:"pet", title: "Vật nuôi", count: 2, label: "thú cưng", iconName: "pawprint.fill", color: .orange, navigate: .addPet),
+        CategoryItem(id:"plant", title: "Cây cối", count: 8, label: "cây", iconName: "leaf.fill", color: .green, navigate: .addPlant),
+        CategoryItem(id:"expend", title: "Chi tiêu", count: 15, label: "khoản", iconName: "creditcard.fill", color: .purple, navigate: .addMenuItem)
     ]
 }

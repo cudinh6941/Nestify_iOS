@@ -9,9 +9,8 @@ import SwiftUI
 
 struct CustomDatePicker: View {
     let label: String
-    @Binding var date: Date
+    @Binding var date: Date?
     var iconColor: Color = .red
-    var iconBgColor: Color = Color.red.opacity(0.2)
     var isRequired: Bool = false
     
     @State private var showingDatePicker = false
@@ -39,11 +38,11 @@ struct CustomDatePicker: View {
             }
             
             Button(action: {
-                tempDate = date
+                tempDate = date ?? Date()
                 showingDatePicker = true
             }) {
                 HStack {
-                    Text(dateFormatter.string(from: date))
+                    Text(dateFormatter.string(from: date ?? Date()))
                         .foregroundColor(.white)
                     
                     Spacer()
@@ -54,20 +53,23 @@ struct CustomDatePicker: View {
                             .frame(width: 32, height: 32)
                         
                         Image(systemName: "calendar")
-                            .foregroundColor(Color.white)
+                            .foregroundColor(Color.gray)
                             .font(.system(size: 16))
                     }
                 }
                 .padding(.horizontal, 12)
                 .padding(.vertical, 14)
-                .background(Colors.iconBgColor)
+                .background(iconBgColor)
                 .cornerRadius(10)
             }
             .buttonStyle(PlainButtonStyle())
         }
         .sheet(isPresented: $showingDatePicker) {
             DatePickerSheet(
-                selectedDate: $date,
+                selectedDate: Binding<Date?>(
+                    get: { date},
+                    set: { date = $0! }
+                ),
                 tempDate: $tempDate,
                 isPresented: $showingDatePicker,
                 accentColor: iconColor
@@ -77,7 +79,7 @@ struct CustomDatePicker: View {
 }
 
 struct DatePickerSheet: View {
-    @Binding var selectedDate: Date
+    @Binding var selectedDate: Date?
     @Binding var tempDate: Date
     @Binding var isPresented: Bool
     var accentColor: Color
